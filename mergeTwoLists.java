@@ -1,11 +1,11 @@
-class Solution {
+class MergeTwoLists {
 	public ListNode mergeTwoLists(ListNode l1, ListNode l2) {					// Merge two in order Linked Lists
 		ListNode p = l1, q = l2, head = null, s = null;
 		while(p != null && q != null){
 			if(p.val < q.val){
 				ListNode n = new ListNode(p.val);
-				if(s != null)s = s.next = n; else s = head = n;					//new node we adding (s.next = n ) move to the end of list (s = s.next)
-				 p = p.next;
+				if(s != null)s = s.next = n; else s = head = n;				//new node we adding (s.next = n ) move 
+				 p = p.next;								// to the end of list (s = s.next)
 			}
 			else{
 				ListNode n = new ListNode(q.val);
@@ -16,12 +16,12 @@ class Solution {
 		if(p != null){
 			if(s != null)s.next = p; else head = s = p;
 		}
-		else {																	// q != null
+		else {											// q != null
 			if(s != null) s.next = q; else head = s = q;
 		}
 		return head;
 	}
-	public class ListNode {														// Definition for singly-linked list.
+	public class ListNode {										// Definition for singly-linked list.
 		final int val;
 		ListNode next = null;
 		ListNode(int val) { this.val = val; }
@@ -29,19 +29,19 @@ class Solution {
 	}
 
 	// ----------- TESTING ------------
-	public ListNode makeList0(){												// ListNode = [] 
+	public ListNode makeList0(){									// ListNode = [] 
 		return null;
 	}
-	public ListNode makeList1(){												// ListNode = [1]
+	public ListNode makeList1(){									// ListNode = [1]
 		return new ListNode(1);
 	}
-	public ListNode makeList3(){												// ListNode = [2 7 8] 
+	public ListNode makeList3(){									// ListNode = [2 7 8] 
 		ListNode a = new ListNode(2);
 		ListNode b = new ListNode(7,a);
 		ListNode c = new ListNode(8,b);
 		return a;
 	}
-	public ListNode makeList6(){												// ListNode = [1 2 3 4 5 6] 
+	public ListNode makeList6(){									// ListNode = [1 2 3 4 5 6] 
 		ListNode a = new ListNode(1);
 		ListNode b = new ListNode(2,a);
 		ListNode c = new ListNode(3,b);
@@ -50,7 +50,7 @@ class Solution {
 		ListNode f = new ListNode(6,e);
 		return a;
 	}
-	public String print(final ListNode head){									// printing method of our singly-linked list
+	public String print(final ListNode head){							// printing method of a linked list
 		String s = null;
 		ListNode p = head;
 		while(p != null){
@@ -59,8 +59,8 @@ class Solution {
 		}
 		return s == null ? "" : s;
 	}
-	public static void test0(String ta){										// empty ListNode test
-		Solution s = new Solution();
+	public static void test0(String ta){								// empty ListNode test
+		MergeTwoLists s = new MergeTwoLists();
 		ListNode l1 = s.makeList0();
 		ListNode l2 = s.makeList0();
 		String tb = "";
@@ -73,8 +73,8 @@ class Solution {
 		String ra = s.print(r);
 		assert(ta.equals(ra));
 	}
-	public static void test1(String ta){										// one ListNode test
-		Solution s = new Solution();
+	public static void test1(String ta){								// one ListNode test
+		MergeTwoLists s = new MergeTwoLists();
 		ListNode l1 = s.makeList1();
 		ListNode l2 = s.makeList0();
 		String tb1 = "1";
@@ -89,8 +89,8 @@ class Solution {
 		String ra = s.print(r);
 		assert(ta.equals(ra));
 	}
-	public static void test9(String ta){										// 9 element ListNode test
-		Solution s = new Solution();
+	public static void test9(String ta){								// 9 element ListNode test
+		MergeTwoLists s = new MergeTwoLists();
 		ListNode l1 = s.makeList3();
 		ListNode l2 = s.makeList6();
 
@@ -105,7 +105,7 @@ class Solution {
 		String ra = s.print(r);
 		assert(ta.equals(ra));
 	}
-	public static void main(String[] args){										// main test for singly-linked list
+	public static void main(String[] args){								// main test for Merge Two Lists
 		test0("");
 		test1("1");
 		test9("1 2 2 3 4 5 6 7 8");
