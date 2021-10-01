@@ -1,0 +1,72 @@
+<h1> Test: Merge Two Linked Lists </h1>
+<table>
+	<tr><td>L1: <td><pre id="r"></pre>
+	<tr><td>L2: <td><pre id="q"></pre>
+	<tr><td>Merge Lists<td><button id="b"> Click Me! </button>
+	<tr><td>After: <td><pre id="p"></pre>
+</table>
+<script> b.onclick = function() {
+	var mergeTwoLists = function(l1,l2){					// Merge two in order Linked Lists
+		var p = l1, q = l2, head = null, s = null;
+		while(p != null && q != null){
+			if(p.val < q.val){
+				var n = new ListNode(p.val);
+				if(s != null)s = s.next = n; else s = head = n;					//new node we adding (s.next = n ) move to the end of list (s = s.next)
+				 p = p.next;
+			}
+			else{
+				var n = new ListNode(q.val);
+				if(s != null)s = s.next = n; else s = head = n;	
+				q = q.next;
+			}
+		}
+		if(p != null){
+			if(s != null)s.next = p; else head = s = p;
+		}
+		else {																	// q != null
+			if(s != null) s.next = q; else head = s = q;
+		}
+		return head;
+	}
+	function ListNode(val, next) {
+    	this.val = (val===undefined ? 0 : val)
+    	this.next = (next===undefined ? null : next)
+ 	}
+	function ListNode(val,prev){
+		this.val = (val===undefined ? 0 : val)
+		if(prev != null) prev.next = this;
+	}
+	function makeList3(){												// ListNode = [2 7 8] 
+		var a = new ListNode(2);
+		var b = new ListNode(7,a);
+		var c = new ListNode(8,b);
+		return a;
+	}
+	function makeList6(){											// ListNode = [1 2 3 4 5 6] 
+		var a = new ListNode(1);
+		var b = new ListNode(2,a);
+		var c = new ListNode(3,b);
+		var d = new ListNode(4,c);
+		var e = new ListNode(5,d);
+		var f = new ListNode(6,e);
+		return a;
+	}
+	function makeList0(){											// ListNode = [] n = 1
+		return null;
+	}
+	function print(head){											// printing method of our singly-linked list
+		var s = null;
+		var p = head;
+		while(p != null){
+			if( s == null) s = "" + p.val; else s += " " + p.val;
+			p = p.next;
+		}
+		return s == null ? "" : s;
+	}
+	var l1   = makeList3();
+	var l2   = makeList6();
+	r.innerHTML = print(l1);
+	q.innerHTML = print(l2);
+	p.innerHTML = print(mergeTwoLists(l1,l2));
+}
+</script>
